@@ -1,3 +1,3 @@
 # Py-Pomodoro
 
-![Alt Text](https://raw.githubusercontent.com/DakshKalley/Text_to_OwO/master/ExampleUse.png)
+![Alt Text](https://github.com/DakshKalley/Py-Pomodoro/blob/master/pomodoroexample.gif?raw=true)
