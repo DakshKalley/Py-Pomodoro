@@ -4,21 +4,27 @@ import os
 
 Study = int(input("Study Time: "))
 Break = int(input("Break Time: "))
-Sessions = int(input("# of Sessions: "))
+Sess = int(input("# of Sessions: "))
 
 def timer(min, msg):
-    sec = (min)
+    sec = (min*60)
     while (sec) > 0:
         os.system('clear')
         print(msg)
         dt = datetime.datetime.now()
-        pt = datetime.datetime()
         print("Current Time: " + str(dt.hour) + ":" + str(dt.minute) + ":" + str(dt.second) + "\n" + str(sec))
         time.sleep(1)
         sec -= 1
 
-while Sessions > 0:
+def notify(title, text):
+    os.system("""
+              osascript -e 'display notification "{}" with title "{}" sound name "Default"'
+              """.format(text, title))
+
+while Sess > 0:
     timer(Study, "~~ Study ~~")
-    timer(Study, "~~ Break ~~")
-    Sessions -= 1
+    notify("Pomodoro", "Break Start")
+    timer(Break, "~~ Break ~~")
+    notify("Pomodoro", "Break Over")
+    Sess -= 1
 print("Study Session Complete!")
