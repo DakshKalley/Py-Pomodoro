@@ -20,7 +20,7 @@ def timer(min, msg, curr, sess):
         print("Pomodoro Timer: " + str(convsec(sec)))
         print("Session: " + str(curr) + "/" + str(sess))
         time.sleep(1)
-        sec -= 60
+        sec -= 1
 
 def notify(title, text):
     os.system("""
