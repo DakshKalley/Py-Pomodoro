@@ -2,25 +2,19 @@ import datetime
 import time
 import os
 
-def convsec(seconds):
-    seconds = seconds % (24 * 3600)
-    seconds %= 3600
-    minutes = seconds // 60
-    seconds %= 60
-    return ("%d:%02d" % (minutes, seconds))
-
-
 def timer(min, msg, curr, sess):
-    sec = (min*60)
-    while (sec) > 0:
+    dt = datetime.datetime.now()
+    it = datetime.timedelta(0, dt.second, dt.microsecond, 0, dt.minute, dt.hour, 0)
+    ft = datetime.timedelta(0, dt.second, dt.microsecond, 0, dt.minute+min, dt.hour, 0)
+    while (ft>it):
         os.system('clear')
         print(msg)
         dt = datetime.datetime.now()
+        ct = datetime.timedelta(0, dt.second, dt.microsecond, 0, dt.minute, dt.hour, 0)
         print("Current Time: " + str(dt.hour) + ":" + str(dt.minute) + ":" + str(dt.second))
-        print("Pomodoro Timer: " + str(convsec(sec)))
+        print("Time Left: " + (str(ft-ct)).split(".")[0])
         print("Session: " + str(curr) + "/" + str(sess))
         time.sleep(1)
-        sec -= 1
 
 def notify(title, text):
     os.system("""
